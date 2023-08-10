@@ -1,0 +1,19 @@
+Importing Libraries: The script begins by importing the necessary libraries, such as PdfReader from PyPDF2, various components from the langchain package, and other dependencies like os.
+
+Setting OpenAI API Key: The OpenAI API key is set as an environment variable using the os.environ method. This key is essential for authenticating with the OpenAI API.
+
+Loading PDF and Extracting Text: The PDF document named "budget_speech.pdf" is loaded using PdfReader from the PyPDF2 library. The script then iterates through each page of the PDF, extracts the text content, and concatenates it into the raw_text variable.
+
+Text Splitting: The CharacterTextSplitter class from the langchain.text_splitter module is used to split the concatenated raw_text into smaller chunks. These chunks are created with a specified size, overlap, and separator.
+
+Initializing OpenAI Embeddings: An instance of the OpenAIEmbeddings class is created from the langchain.embeddings.openai module. This step seems to involve preparing the text data for embedding.
+
+Creating FAISS Index: The FAISS library is used to create an index for similarity search. The from_texts method is employed to create the index based on the smaller text chunks and their embeddings.
+
+Loading Question Answering Chain: The script loads a question answering chain using the load_qa_chain function from the langchain.chains.question_answering module. This chain is associated with OpenAI's language model and is designed for question answering tasks.
+
+Performing Similarity Search: The variable query is defined with a specific question/query. The document_search object (created with FAISS) performs a similarity search on the text chunks, returning relevant documents based on the query.
+
+Running Question Answering Chain: The loaded question answering chain (chain) is executed using the run method. It takes the extracted documents (docs) and the query as input, and presumably, it extracts answers related to the query from the documents.
+
+Printing Chain Result: The result of the question answering chain is printed using the print function.
